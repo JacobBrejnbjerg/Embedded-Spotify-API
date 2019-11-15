@@ -93,5 +93,8 @@ This way it is possible through a serial interface to interact with the ESP8266 
 ## AT Commands
 ![enter image description here](https://i.imgur.com/gtW6glL.jpg)
 
+Example of serial communication between ATmega2560 and ESP8266. In this case the ATmega2560 sent the AT command *CIPMUX:0* and the ESP8266 responded *OK*
+![AT communication](https://i.imgur.com/qNlJ0SU.png)
+
 ## Image of the project
 ![Image of the setup](https://i.imgur.com/xRg087G.jpg)
