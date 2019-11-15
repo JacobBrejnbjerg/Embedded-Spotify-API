@@ -25,6 +25,9 @@ The API comes with Swagger. Start the project and access URL:PORT or URL:PORT/in
 - [ESP8266](#esp8266-1)
 - [LCD Display](#lcd-display-1)
 - [Infrared Receiver](#infrared-receiver-1)
+- [Structs](#structs)
+- [API Library](#api-library)
+- [ShowMenu Library](#showmenu-library)
 - [Debugging](#debugging)
 - [AT Commands](#at-commands)
 - [Image of the project](#image-of-the-project)
@@ -85,6 +88,47 @@ The LCD Display displays Songname, artist, volume, progress in song (in seconds)
 The infrared receiver is in control of handling the NEC communication from the remote to the embedded software. It runs on a TIMER4 interrupt which triggers whenever pin PL0 goes high. This is used to register all the times received from the NEC remote.
 
 ![Infrared Receiver Codeflow](https://i.imgur.com/04Loh1n.png)
+
+## Structs
+
+    typedef struct
+	{
+		char SongName[50];
+		char Artist[50];
+		int Seconds;
+		int PlayedSeconds;
+		uint8_t Volume;
+	} SpotifyReply;
+
+
+## API Library
+**void API_Get_Song(SpotifyReply \*spotifyReply)**
+Gets information about the current song. Inserts information into given SpotifyReply struct parameter.
+
+**void API_Next_Song(SpotifyReply \*spotifyReply)**
+ Goes to next Spotify song.
+
+**void API_Previous_Song(SpotifyReply \*spotifyReply)**
+Goes to previous Spotify song.
+
+**void API_Pause_Song(void)**
+Pauses Spotify song.
+
+**void API_Play_Song(void)**
+Resumes Spotiy song.
+
+**void API_Set_Volume(uint8_t volume)**
+Set volume of Spotify.
+
+## ShowMenu Library
+**void LCD_UpdateSong(SpotifyReply \*spotifyReply)**
+Updates all the information about a song from the SpotifyReply struct.
+
+**void LCD_SetVolume(uint8_t volume)**
+Sets the volume in the display.
+
+**void LCD_SetProgress(SpotifyReply \*spotifyReply)**
+Sets progress in the display using the values in the SpotifyReply parameter.
 
 ## Debugging
 If it is necessary to debug the ESP8266 module, it is possible; simply move RX1/TX1 to RX/TX on the ATmega. They have to be paired as below:
