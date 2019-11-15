@@ -48,7 +48,7 @@ Wire the modules as described in the pictures below:
 ![IR Wiring](https://i.imgur.com/H42HEmB.png)
 
 ##### ESP8266
-![enter image description here](https://i.imgur.com/DIQGXDo.png)
+![ESP8266 Wiring](https://i.imgur.com/DIQGXDo.png)
 
 2. #### Embedded solution
 Open up the Embedded Solution. In the ESP8266 Project change the following in the ESP8266Library.h file:
@@ -73,14 +73,17 @@ Press GET TOKEN. For ease, just check all the check boxes. The token is valid fo
 ## ESP8266
 The ESP8266 runs USART with a BAUD rate of 115200. The ESP8266 is in charge of sending the package to the web API. The codeflow is as follows:
 ![ESP8266 Codeflow](https://i.imgur.com/2EAXqOJ.png)
+
 The ESP8266 is controlled by AT Commands.
 
 ## LCD Display
 The LCD Display displays Songname, artist, volume, progress in song (in seconds) and total length of song (in seconds).
+
 ![LCD Display](https://i.imgur.com/CaHvGnf.png)
 
 ## Infrared Receiver
 The infrared receiver is in control of handling the NEC communication from the remote to the embedded software. It runs on a TIMER4 interrupt which triggers whenever pin PL0 goes high. This is used to register all the times received from the NEC remote.
+
 ![Infrared Receiver Codeflow](https://i.imgur.com/04Loh1n.png)
 
 ## Debugging
